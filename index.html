@@ -128,8 +128,7 @@
 </div>
 <div class="city-list" id="cityList"></div>
 <script>
-const BASE_URL = 'https://robertmak.github.io/Startups_NE_Large';
-const cities = [
+var cities = [
   { rank: 1, city: "Providence", stateCode: "RI", slug: "providence-ri" },
   { rank: 2, city: "Pittsburgh", stateCode: "PA", slug: "pittsburgh-pa" },
   { rank: 3, city: "Brooklyn", stateCode: "NY", slug: "brooklyn-ny" },
@@ -147,24 +146,24 @@ const cities = [
   { rank: 15, city: "Bronx", stateCode: "NY", slug: "bronx-ny" }
 ];
 function buildList() {
-  const list = document.getElementById('cityList');
-  list.innerHTML = cities.map(city => {
-    const cardUrl = `${BASE_URL}/card.html?city=${city.slug}`;
-    return `
-      <a href="${cardUrl}" class="city-item">
-        <div class="city-info">
-          <span class="city-rank">#${city.rank}</span>
-          <span class="city-name">${city.city}, ${city.stateCode}</span>
-        </div>
-        <span class="view-card-btn">
-          View Card
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </span>
-      </a>
-    `;
-  }).join('');
+  var list = document.getElementById('cityList');
+  var html = '';
+  for (var i = 0; i < cities.length; i++) {
+    var c = cities[i];
+    html += '<a href="card.html?city=' + c.slug + '" class="city-item">' +
+      '<div class="city-info">' +
+        '<span class="city-rank">#' + c.rank + '</span>' +
+        '<span class="city-name">' + c.city + ', ' + c.stateCode + '</span>' +
+      '</div>' +
+      '<span class="view-card-btn">' +
+        'View Card' +
+        '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M5 12h14M12 5l7 7-7 7"/>' +
+        '</svg>' +
+      '</span>' +
+    '</a>';
+  }
+  list.innerHTML = html;
 }
 buildList();
 </script>
