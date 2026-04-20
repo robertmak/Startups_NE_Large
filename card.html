@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Cities for Startups</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    background: transparent;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body.has-back {
+    overflow: visible;
+    height: auto;
+    padding: 20px;
+    justify-content: flex-start;
+    background: #0a0a1a;
+  }
+  .card-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(5, 10, 58, 0.6);
+    border: 1px solid rgba(255, 55, 122, 0.2);
+    color: #ff377a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 8px 18px;
+    border-radius: 24px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-bottom: 16px;
+  }
+  .back-btn:hover {
+    background: rgba(255, 55, 122, 0.1);
+    border-color: #ff377a;
+    color: white;
+    transform: translateX(-2px);
+    box-shadow: 0 4px 12px rgba(255, 55, 122, 0.15);
+  }
+  .back-btn:active { transform: translateX(0); }
+  .back-btn svg {
+    width: 14px; height: 14px;
+    stroke: currentColor; stroke-width: 2;
+    fill: none; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .card {
+    width: 100%;
+    height: 300px;
+    background: #050a3a;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+  }
+  .card-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+      to right,
+      #4c0649 0%,
+      #3d0840 22%,
+      #2d0a3a 34%,
+      #1a0a35 42%,
+      #0a0d3d 50%,
+      #050a3a 60%,
+      #050a3a 100%
+    );
+  }
+  .card-deco {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+  }
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  .glow-1 {
+    width: 160px; height: 160px;
+    top: -15%; left: 5%;
+    background: rgba(255, 55, 122, 0.1);
+  }
+  .glow-2 {
+    width: 120px; height: 120px;
+    bottom: -5%; left: 25%;
+    background: rgba(76, 6, 73, 0.18);
+  }
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 55, 122, 0.06);
+  }
+  .circle-1 { width: 200px; height: 200px; top: -50px; left: -30px; }
+  .circle-2 { width: 280px; height: 280px; bottom: -100px; left: -50px; border-color: rgba(76, 6, 73, 0.1); }
+  .circle-3 { width: 100px; height: 100px; top: 40%; left: 20%; background: rgba(255, 55, 122, 0.015); border-color: rgba(255, 55, 122, 0.04); }
+  .grid-line {
+    position: absolute;
+    background: rgba(255, 55, 122, 0.02);
+  }
+  .grid-v1 { width: 1px; height: 100%; top: 0; left: 28%; }
+  .grid-v2 { width: 1px; height: 100%; top: 0; left: 48%; }
+  .grid-h1 { width: 50%; height: 1px; top: 38%; left: 0; }
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 55, 122, 0.15);
+  }
+  /* LEFT SIDE - City Identity */
+  .card-left {
+    width: 50%;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  .city-rank-top {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+  }
+  .city-rank-hash {
+    font-size: 30px;
+    font-weight: 800;
+    color: rgba(255, 55, 122, 0.45);
+    line-height: 1;
+  }
+  .city-rank-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(255, 55, 122, 0.35);
+    line-height: 1;
+  }
+  /* Mobile inline rank (hidden on desktop) */
+  .city-rank-inline {
+    display: none;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .city-rank-inline .inline-hash {
+    font-size: 18px;
+    font-weight: 800;
+    color: rgba(255, 55, 122, 0.45);
+    line-height: 1;
+  }
+  .city-rank-inline .inline-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: rgba(255, 55, 122, 0.35);
+    line-height: 1;
+    margin-right: 8px;
+  }
+  .city-center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding-left: 28px;
+  }
+  .city-name {
+    font-size: 38px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.1;
+  }
+  .state-name {
+    font-size: 15px;
+    color: #ff377a;
+    opacity: 0.9;
+  }
+  .city-tagline {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 2px;
+  }
+  .left-spacer {
+    height: 20px;
+  }
+  /* RIGHT SIDE - Stats */
+  .card-right {
+    width: 50%;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+  }
+  .right-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .rank-badge { display: inline-flex; align-items: center; gap: 6px; }
+  .rank-label { font-size: 9px; font-weight: 600; color: rgba(255,55,122,0.7); text-transform: uppercase; letter-spacing: 1.5px; }
+  .rank-number { font-size: 12px; font-weight: 800; color: #ff377a; background: rgba(255,55,122,0.1); padding: 2px 10px; border-radius: 20px; border: 1px solid rgba(255,55,122,0.25); }
+  .points-badge { display: flex; flex-direction: column; align-items: flex-end; }
+  .points-value { font-size: 22px; font-weight: 700; color: #ff377a; line-height: 1; }
+  .points-label { font-size: 8px; font-weight: 600; color: rgba(255,55,122,0.5); text-transform: uppercase; letter-spacing: 1px; }
+  .card-subtitle { font-size: 9px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 2px; }
+  .stats-container { display: flex; flex-direction: column; }
+  .stats-heading { font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .stat { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(76,6,73,0.2); gap: 12px; }
+  .stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .stat-label { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.55); white-space: nowrap; }
+  .stat-value { font-size: 18px; font-weight: 700; color: white; white-space: nowrap; }
+  /* Embed button - bottom left */
+  .embed-btn {
+    position: absolute; bottom: 10px; left: 12px; z-index: 3;
+    background: rgba(76,6,73,0.4); border: 1px solid rgba(255,55,122,0.2);
+    color: #ff377a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
+    padding: 5px 12px; border-radius: 20px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  }
+  .embed-btn:hover { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,55,122,0.2); }
+  .embed-btn:active { transform: translateY(0); }
+  .embed-btn svg { width: 12px; height: 12px; fill: currentColor; }
+  .embed-modal {
+    display: none; position: absolute; bottom: 42px; left: 12px; z-index: 4;
+    background: #050a3a; border: 1px solid rgba(255,55,122,0.2);
+    border-radius: 12px; padding: 14px; width: 320px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .embed-modal.active { display: block; }
+  .embed-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .embed-modal-title { font-size: 12px; font-weight: 600; color: white; }
+  .embed-modal-close { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 4px; }
+  .embed-modal-close:hover { color: white; }
+  .embed-code {
+    width: 100%; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,55,122,0.15); border-radius: 8px;
+    padding: 8px 10px; color: rgba(255,255,255,0.7);
+    font-family: 'Courier New', monospace; font-size: 9px;
+    resize: none; height: 110px; outline: none; line-height: 1.5;
+  }
+  .embed-code:focus { border-color: #ff377a; }
+  .embed-copy-btn {
+    margin-top: 8px; width: 100%;
+    background: rgba(255,55,122,0.1); border: 1px solid rgba(255,55,122,0.3);
+    color: #ff377a; font-size: 11px; font-weight: 600;
+    padding: 7px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .embed-copy-btn:hover { background: rgba(255,55,122,0.2); color: white; }
+  .embed-copy-btn.copied { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; }
+  .error-msg { color: rgba(255,255,255,0.5); font-size: 14px; text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+  @media (max-width:1024px) {
+    .card { height: 280px; }
+    .card-left { padding: 20px 22px; }
+    .card-right { padding: 20px 22px; }
+    .city-name { font-size: 34px; }
+    .city-rank-hash { font-size: 26px; }
+    .city-rank-num { font-size: 42px; }
+    .city-center { padding-left: 24px; }
+  }
+  @media (max-width:768px) {
+    .card { flex-direction: column; height: auto; }
+    .card-left { width: 100%; padding: 20px 22px 10px; order: 1; justify-content: flex-start; gap: 6px; }
+    .card-right { width: 100%; padding: 10px 22px 44px; order: 2; }
+    /* Hide the standalone rank block, show inline */
+    .city-rank-top { display: none; }
+    .city-rank-inline { display: flex; }
+    .city-center { padding-left: 0; }
+    .city-name { font-size: 28px; }
+    .city-tagline { margin-bottom: 0; }
+    .left-spacer { display: none; }
+    .card-bg {
+      background: linear-gradient(
+        to bottom,
+        #4c0649 0%,
+        #2d0a3a 25%,
+        #050a3a 50%,
+        #050a3a 100%
+      );
+    }
+    .stat { padding: 6px 0; }
+    .embed-btn { bottom: 8px; left: auto; right: auto; left: 50%; transform: translateX(-50%); }
+    .embed-btn:hover { transform: translateX(-50%) translateY(-1px); }
+    .embed-modal { bottom: 38px; left: 50%; transform: translateX(-50%); width: 290px; }
+    .back-btn { font-size: 11px; padding: 7px 14px; }
+  }
+  @media (max-width:480px) {
+    .card-left { padding: 16px 16px 8px; }
+    .card-right { padding: 8px 16px 40px; }
+    .city-name { font-size: 24px; }
+    .city-rank-inline .inline-hash { font-size: 15px; }
+    .city-rank-inline .inline-num { font-size: 24px; margin-right: 6px; }
+    .stat { padding: 5px 0; } .stat-label { font-size: 10px; } .stat-value { font-size: 16px; }
+    .embed-modal { width: calc(100% - 24px); }
+    .back-btn { font-size: 10px; padding: 6px 12px; margin-bottom: 12px; }
+    body.has-back { padding: 12px; }
+  }
+  @media (max-width:360px) {
+    .card-left { padding: 14px 12px 6px; }
+    .card-right { padding: 6px 12px 38px; }
+    .city-name { font-size: 22px; } .stat-value { font-size: 15px; }
+    .city-rank-inline .inline-hash { font-size: 14px; }
+    .city-rank-inline .inline-num { font-size: 22px; margin-right: 5px; }
+    .embed-btn { font-size: 9px; padding: 4px 10px; }
+    .embed-modal { width: calc(100% - 16px); padding: 12px; }
+    body.has-back { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="card-wrapper">
+  <a href="https://robertmak.github.io/Startups-NE/" class="back-btn" id="backBtn">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    Back to Rankings
+  </a>
+  <div class="card" id="cityCard">
+    <p class="error-msg">Loading...</p>
+  </div>
+</div>
+<script>
+var BASE_URL = 'https://robertmak.github.io/Startups-NE';
+var cities = [
+  { rank: 1, city: "Providence", state: "Rhode Island", stateCode: "RI", slug: "providence-ri", points: 100.0,
+    metrics: [{ label: "Freelancer Density", value: "8.7%" }, { label: "Freelancer % Change", value: "119.6%" }, { label: "New Establishment Growth", value: "10.0%" }] },
+  { rank: 2, city: "Pittsburgh", state: "Pennsylvania", stateCode: "PA", slug: "pittsburgh-pa", points: 99.2,
+    metrics: [{ label: "Regional Price Parity", value: "94.7" }, { label: "College-Educated Residents", value: "36.9%" }, { label: "Survival Rate", value: "68.8%" }] },
+  { rank: 3, city: "Brooklyn", state: "New York", stateCode: "NY", slug: "brooklyn-ny", points: 99.0,
+    metrics: [{ label: "Kickstarter Success", value: "63.0%" }, { label: "Coworking Spaces", value: "90" }, { label: "New Establishments Density", value: "9.1%" }] },
+  { rank: 4, city: "Rochester", state: "New York", stateCode: "NY", slug: "rochester-ny", points: 94.9,
+    metrics: [{ label: "Office Costs", value: "$17,271" }, { label: "Regional Price Parity", value: "97.0" }, { label: "Survival Rate", value: "66.1%" }] },
+  { rank: 5, city: "Manhattan", state: "New York", stateCode: "NY", slug: "manhattan-ny", points: 94.3,
+    metrics: [{ label: "Coworking Spaces", value: "306" }, { label: "Consulting Establishments", value: "14.2%" }, { label: "College-Educated Residents", value: "49.9%" }] },
+  { rank: 6, city: "Queens", state: "New York", stateCode: "NY", slug: "queens-ny", points: 93.7,
+    metrics: [{ label: "Kickstarter Success", value: "50.3%" }, { label: "Freelancer Density", value: "6.7%" }, { label: "New Establishments Density", value: "9.0%" }] },
+  { rank: 7, city: "Worcester", state: "Massachusetts", stateCode: "MA", slug: "worcester-ma", points: 93.4,
+    metrics: [{ label: "Coworking Costs", value: "$10,500" }, { label: "Higher Education Change", value: "33.5%" }, { label: "Survival Rate", value: "67.4%" }] },
+  { rank: 8, city: "Bridgeport", state: "Connecticut", stateCode: "CT", slug: "bridgeport-ct", points: 93.3,
+    metrics: [{ label: "Freelancer Density", value: "8.5%" }, { label: "Higher Education Change", value: "39.4%" }, { label: "New Establishment Growth", value: "21.8%" }] },
+  { rank: 9, city: "Buffalo", state: "New York", stateCode: "NY", slug: "buffalo-ny", points: 92.1,
+    metrics: [{ label: "Coworking Costs", value: "$9,540" }, { label: "Office Costs", value: "$17,932" }, { label: "Regional Price Parity", value: "95.8" }] },
+  { rank: 10, city: "Boston", state: "Massachusetts", stateCode: "MA", slug: "boston-ma", points: 90.7,
+    metrics: [{ label: "Kickstarter Success", value: "53.7%" }, { label: "Coworking Spaces", value: "65" }, { label: "College-Educated Residents", value: "38.9%" }] },
+  { rank: 11, city: "Jersey City", state: "New Jersey", stateCode: "NJ", slug: "jersey-city-nj", points: 89.3,
+    metrics: [{ label: "Freelancer % Change", value: "91.3%" }, { label: "College-Educated Residents", value: "43.1%" }, { label: "New Establishments Density", value: "8.1%" }] },
+  { rank: 12, city: "Newark", state: "New Jersey", stateCode: "NJ", slug: "newark-nj", points: 88.3,
+    metrics: [{ label: "Coworking Costs", value: "$9,240" }, { label: "Labor Costs", value: "$41,001" }, { label: "Higher Education Change", value: "66.7%" }] },
+  { rank: 13, city: "Philadelphia", state: "Pennsylvania", stateCode: "PA", slug: "philadelphia-pa", points: 86.8,
+    metrics: [{ label: "Labor Costs", value: "$50,733" }, { label: "Coworking Spaces", value: "61" }, { label: "New Establishments Density", value: "6.5%" }] },
+  { rank: 14, city: "Springfield", state: "Massachusetts", stateCode: "MA", slug: "springfield-ma", points: 81.3,
+    metrics: [{ label: "Office Costs", value: "$16,510" }, { label: "Regional Price Parity", value: "96.1" }, { label: "Survival Rate", value: "68.8%" }] },
+  { rank: 15, city: "Bronx", state: "New York", stateCode: "NY", slug: "bronx-ny", points: 79.4,
+    metrics: [{ label: "Office Costs", value: "$28,115" }, { label: "Labor Costs", value: "$41,050" }, { label: "New Establishments Density", value: "7.1%" }] }
+];
+function getCitySlug() {
+  var params = new URLSearchParams(window.location.search);
+  return params.get('city') || 'providence-ri';
+}
+function isEmbedded() {
+  try { return window.self !== window.top; }
+  catch (e) { return true; }
+}
+function makeDots(n) {
+  var h = '';
+  for (var i = 0; i < n; i++) {
+    var t = Math.random() * 100;
+    var l = Math.random() * 50;
+    var o = 0.04 + Math.random() * 0.1;
+    var s = 2 + Math.random() * 3;
+    h += '<div class="dot" style="top:'+t+'%;left:'+l+'%;opacity:'+o+';width:'+s+'px;height:'+s+'px;"></div>';
+  }
+  return h;
+}
+function renderCard(city) {
+  var card = document.getElementById('cityCard');
+  var backBtn = document.getElementById('backBtn');
+  var embedId = 'startups-ne-' + city.slug;
+  var cardTitle = city.city + ', ' + city.stateCode + ' - #' + city.rank + ' Best Cities for Startups';
+  var cardUrl = BASE_URL + '/card.html?city=' + city.slug;
+  document.title = cardTitle;
+  if (isEmbedded()) {
+    backBtn.style.display = 'none';
+  } else {
+    document.body.classList.add('has-back');
+  }
+  var metricsHtml = '';
+  for (var i = 0; i < city.metrics.length; i++) {
+    metricsHtml += '<div class="stat"><span class="stat-label">' + city.metrics[i].label + '</span><span class="stat-value">' + city.metrics[i].value + '</span></div>';
+  }
+  card.innerHTML =
+    '<div class="card-bg"></div>' +
+    '<div class="card-deco">' +
+      '<div class="glow glow-1"></div>' +
+      '<div class="glow glow-2"></div>' +
+      '<div class="circle circle-1"></div>' +
+      '<div class="circle circle-2"></div>' +
+      '<div class="circle circle-3"></div>' +
+      '<div class="grid-line grid-v1"></div>' +
+      '<div class="grid-line grid-v2"></div>' +
+      '<div class="grid-line grid-h1"></div>' +
+      makeDots(14) +
+    '</div>' +
+    '<div class="card-left">' +
+      '<div class="city-rank-top">' +
+        '<span class="city-rank-hash">#</span>' +
+        '<span class="city-rank-num">' + city.rank + '</span>' +
+      '</div>' +
+      '<div class="city-center">' +
+        '<div class="city-rank-inline">' +
+          '<span class="inline-hash">#</span>' +
+          '<span class="inline-num">' + city.rank + '</span>' +
+        '</div>' +
+        '<h2 class="city-name">' + city.city + '</h2>' +
+        '<p class="state-name">' + city.state + '</p>' +
+        '<p class="city-tagline">' + city.stateCode + ' &bull; Northeast U.S.</p>' +
+      '</div>' +
+      '<div class="left-spacer"></div>' +
+    '</div>' +
+    '<div class="card-right">' +
+      '<div>' +
+        '<div class="right-header">' +
+          '<div class="rank-badge"><span class="rank-label">Rank</span><span class="rank-number">#' + city.rank + '</span></div>' +
+          '<div class="points-badge"><span class="points-value">' + city.points.toFixed(1) + '</span><span class="points-label">Total Points</span></div>' +
+        '</div>' +
+        '<p class="card-subtitle">Best Cities for Startups</p>' +
+      '</div>' +
+      '<div class="stats-container">' +
+        '<p class="stats-heading">Top Performing Metrics</p>' +
+        metricsHtml +
+      '</div>' +
+    '</div>' +
+    '<button class="embed-btn" onclick="toggleEmbed()">' +
+      '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>' +
+      'Embed' +
+    '</button>' +
+    '<div class="embed-modal" id="embedModal">' +
+      '<div class="embed-modal-header">' +
+        '<span class="embed-modal-title">Embed This Card</span>' +
+        '<button class="embed-modal-close" onclick="toggleEmbed()">&times;</button>' +
+      '</div>' +
+      '<textarea class="embed-code" id="embedCode" readonly>' +
+        '&lt;div style="width: 100%; margin: 0 auto;"&gt;\n' +
+        '  &lt;iframe\n' +
+        '    id="' + embedId + '"\n' +
+        '    title="' + cardTitle + '"\n' +
+        '    aria-label="' + city.city + ' ' + city.state + ' startup city card"\n' +
+        '    src="' + cardUrl + '"\n' +
+        '    width="100%"\n' +
+        '    height="300"\n' +
+        '    frameborder="0"\n' +
+        '    scrolling="no"\n' +
+        '    style="display: block; border: none; max-width: 100%; min-width: 100% !important; overflow: hidden;"\n' +
+        '    data-external="1"&gt;\n' +
+        '  &lt;/iframe&gt;\n' +
+        '  &lt;script src="' + BASE_URL + '/embedscript.js"&gt;&lt;/script&gt;\n' +
+        '&lt;/div&gt;' +
+      '</textarea>' +
+      '<button class="embed-copy-btn" id="copyBtn" onclick="copyEmbed()">Copy Embed Code</button>' +
+    '</div>';
+  if (isEmbedded()) {
+    window.parent.postMessage({
+      type: 'startups-ne-resize',
+      id: embedId,
+      height: card.scrollHeight
+    }, '*');
+  }
+}
+function toggleEmbed() {
+  document.getElementById('embedModal').classList.toggle('active');
+}
+function copyEmbed() {
+  var code = document.getElementById('embedCode');
+  code.select();
+  document.execCommand('copy');
+  var btn = document.getElementById('copyBtn');
+  btn.textContent = 'Copied!';
+  btn.classList.add('copied');
+  setTimeout(function() {
+    btn.textContent = 'Copy Embed Code';
+    btn.classList.remove('copied');
+  }, 2000);
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.embed-btn') && !e.target.closest('.embed-modal')) {
+    var modal = document.getElementById('embedModal');
+    if (modal) modal.classList.remove('active');
+  }
+});
+var slug = getCitySlug();
+var city = null;
+for (var i = 0; i < cities.length; i++) {
+  if (cities[i].slug === slug) { city = cities[i]; break; }
+}
+if (city) {
+  renderCard(city);
+} else {
+  document.getElementById('cityCard').innerHTML = '<p class="error-msg">City not found. Check the URL parameter.</p>';
+  document.body.classList.add('has-back');
+}
+</script>
+</body>
+</html>
