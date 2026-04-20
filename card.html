@@ -8,28 +8,25 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     background: transparent;
-    overflow: hidden;
     width: 100%;
-    height: 100%;
+    height: auto;
+    overflow: hidden;
   }
   body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: block;
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   body.has-back {
     overflow: visible;
-    height: auto;
     padding: 20px;
-    justify-content: flex-start;
     background: #0a0a1a;
   }
   .card-wrapper {
     position: relative;
     width: 100%;
+    line-height: 0;
+    font-size: 0;
   }
   .back-btn {
     display: inline-flex;
@@ -48,6 +45,7 @@
     text-decoration: none;
     transition: all 0.2s ease;
     margin-bottom: 16px;
+    line-height: 1.4;
   }
   .back-btn:hover {
     background: rgba(255, 55, 122, 0.1);
@@ -69,6 +67,8 @@
     overflow: hidden;
     position: relative;
     display: flex;
+    font-size: 16px;
+    line-height: 1.4;
   }
   .card-bg {
     position: absolute;
@@ -271,7 +271,7 @@
   }
   .embed-copy-btn:hover { background: rgba(255,55,122,0.2); color: white; }
   .embed-copy-btn.copied { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; }
-  .error-msg { color: rgba(255,255,255,0.5); font-size: 14px; text-align: center; padding: 40px 20px; position: relative; z-index: 2; }
+  .error-msg { color: rgba(255,255,255,0.5); font-size: 14px; text-align: center; padding: 40px 20px; position: relative; z-index: 2; line-height: 1.4; }
   @media (max-width:1024px) {
     .card { height: 280px; }
     .card-left { padding: 20px 22px; }
@@ -423,6 +423,15 @@ function makeBubbles(n) {
   }
   return h;
 }
+function notifyParentHeight() {
+  if (!isEmbedded()) return;
+  var card = document.getElementById('cityCard');
+  var height = card.offsetHeight;
+  window.parent.postMessage({
+    type: 'startups-ne-resize',
+    height: height
+  }, '*');
+}
 function renderCard(city) {
   var card = document.getElementById('cityCard');
   var backBtn = document.getElementById('backBtn');
@@ -492,7 +501,7 @@ function renderCard(city) {
         '<button class="embed-modal-close" onclick="toggleEmbed()">&times;</button>' +
       '</div>' +
       '<textarea class="embed-code" id="embedCode" readonly>' +
-        '&lt;div style="width: 100%; margin: 0 auto;"&gt;\n' +
+        '&lt;div style="width:100%;max-width:100%;margin:0;padding:0;line-height:0;font-size:0;"&gt;\n' +
         '  &lt;iframe\n' +
         '    id="' + embedId + '"\n' +
         '    title="' + cardTitle + '"\n' +
@@ -502,21 +511,15 @@ function renderCard(city) {
         '    height="300"\n' +
         '    frameborder="0"\n' +
         '    scrolling="no"\n' +
-        '    style="display: block; border: none; max-width: 100%; min-width: 100% !important; overflow: hidden;"\n' +
+        '    style="display:block;border:none;margin:0;padding:0;max-width:100%;min-width:100%!important;overflow:hidden;line-height:0;"\n' +
         '    data-external="1"&gt;\n' +
         '  &lt;/iframe&gt;\n' +
-        '  &lt;script src="' + BASE_URL + '/embedscript.js"&gt;&lt;/script&gt;\n' +
         '&lt;/div&gt;' +
       '</textarea>' +
       '<button class="embed-copy-btn" id="copyBtn" onclick="copyEmbed()">Copy Embed Code</button>' +
     '</div>';
-  if (isEmbedded()) {
-    window.parent.postMessage({
-      type: 'startups-ne-resize',
-      id: embedId,
-      height: card.scrollHeight
-    }, '*');
-  }
+
+  setTimeout(notifyParentHeight, 100);
 }
 function toggleEmbed() {
   document.getElementById('embedModal').classList.toggle('active');
