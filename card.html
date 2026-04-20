@@ -126,6 +126,30 @@
     border-radius: 50%;
     background: rgba(255, 55, 122, 0.15);
   }
+  /* Bubbles */
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    animation: bubbleFloat 12s ease-in-out infinite;
+  }
+  .bubble::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 30%;
+    height: 22%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    filter: blur(1px);
+    transform: rotate(-30deg);
+  }
+  @keyframes bubbleFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    25% { transform: translateY(-10px) scale(1.04); }
+    50% { transform: translateY(-5px) scale(0.97); }
+    75% { transform: translateY(-14px) scale(1.03); }
+  }
   /* LEFT SIDE - City Identity */
   .card-left {
     width: 50%;
@@ -286,7 +310,6 @@
     .card { flex-direction: column; height: auto; }
     .card-left { width: 100%; padding: 20px 22px 10px; order: 1; justify-content: flex-start; gap: 6px; }
     .card-right { width: 100%; padding: 10px 22px 44px; order: 2; }
-    /* Hide the standalone rank block, show inline */
     .city-rank-top { display: none; }
     .city-rank-inline { display: flex; }
     .city-center { padding-left: 0; }
@@ -333,7 +356,7 @@
 </head>
 <body>
 <div class="card-wrapper">
-  <a href="https://robertmak.github.io/Startups-NE/" class="back-btn" id="backBtn">
+  <a href="https://robertmak.github.io/Startups_NE_Large/" class="back-btn" id="backBtn">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M19 12H5M12 19l-7-7 7-7"/>
     </svg>
@@ -344,7 +367,7 @@
   </div>
 </div>
 <script>
-var BASE_URL = 'https://robertmak.github.io/Startups-NE';
+var BASE_URL = 'https://robertmak.github.io/Startups_NE_Large';
 var cities = [
   { rank: 1, city: "Providence", state: "Rhode Island", stateCode: "RI", slug: "providence-ri", points: 100.0,
     metrics: [{ label: "Freelancer Density", value: "8.7%" }, { label: "Freelancer % Change", value: "119.6%" }, { label: "New Establishment Growth", value: "10.0%" }] },
@@ -396,6 +419,42 @@ function makeDots(n) {
   }
   return h;
 }
+function makeBubbles(n) {
+  var h = '';
+  var colors = [
+    { r: 255, g: 55, b: 122 },
+    { r: 180, g: 40, b: 200 },
+    { r: 100, g: 60, b: 255 },
+    { r: 255, g: 100, b: 180 }
+  ];
+  for (var i = 0; i < n; i++) {
+    var size = 20 + Math.random() * 70;
+    var top = 5 + Math.random() * 80;
+    var left = 3 + Math.random() * 92;
+    var opacity = 0.4 + Math.random() * 0.5;
+    var delay = -(Math.random() * 14).toFixed(2);
+    var duration = (10 + Math.random() * 12).toFixed(2);
+    var c = colors[Math.floor(Math.random() * colors.length)];
+    var borderAlpha = (0.08 + Math.random() * 0.12).toFixed(3);
+    var glowAlpha = (0.06 + Math.random() * 0.08).toFixed(3);
+    var fillStart = (0.04 + Math.random() * 0.06).toFixed(3);
+    var fillMid = (0.02 + Math.random() * 0.04).toFixed(3);
+    var highlightAlpha = (0.08 + Math.random() * 0.1).toFixed(3);
+    h += '<div class="bubble" style="' +
+      'width:' + size.toFixed(1) + 'px;' +
+      'height:' + size.toFixed(1) + 'px;' +
+      'top:' + top.toFixed(1) + '%;' +
+      'left:' + left.toFixed(1) + '%;' +
+      'opacity:' + opacity.toFixed(2) + ';' +
+      'animation-delay:' + delay + 's;' +
+      'animation-duration:' + duration + 's;' +
+      'border:1px solid rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + borderAlpha + ');' +
+      'box-shadow:0 0 ' + (8 + Math.random() * 12).toFixed(0) + 'px rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + glowAlpha + ');' +
+      'background:radial-gradient(circle at 30% 30%,rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + fillStart + ') 0%,rgba(' + c.r + ',' + c.g + ',' + c.b + ',' + fillMid + ') 40%,transparent 70%);' +
+    '"></div>';
+  }
+  return h;
+}
 function renderCard(city) {
   var card = document.getElementById('cityCard');
   var backBtn = document.getElementById('backBtn');
@@ -424,6 +483,7 @@ function renderCard(city) {
       '<div class="grid-line grid-v2"></div>' +
       '<div class="grid-line grid-h1"></div>' +
       makeDots(14) +
+      makeBubbles(16) +
     '</div>' +
     '<div class="card-left">' +
       '<div class="city-rank-top">' +
