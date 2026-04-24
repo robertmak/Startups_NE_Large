@@ -511,7 +511,7 @@ function renderCard(city) {
         '<button class="embed-modal-close" onclick="toggleEmbed()">&times;</button>' +
       '</div>' +
       '<textarea class="embed-code" id="embedCode" readonly>' +
-        '&lt;div style="width:100%;max-width:100%;margin:0;padding:0;line-height:0;font-size:0;"&gt;\n' +
+        '&lt;div data-startups-embed="true" style="width:100%;max-width:100%;margin:0;padding:0;line-height:0;font-size:0;"&gt;\n' +
         '  &lt;iframe\n' +
         '    id="' + embedId + '"\n' +
         '    title="' + cardTitle + '"\n' +
@@ -525,8 +525,8 @@ function renderCard(city) {
         '    style="display:block;border:none;margin:0;padding:0;max-width:100%;min-width:100%!important;overflow:hidden;line-height:0;"\n' +
         '    data-external="1"&gt;\n' +
         '  &lt;/iframe&gt;\n' +
-        '  &lt;script src="' + BASE_URL + '/embedscript.js"&gt;&lt;/script&gt;\n' +
-        '&lt;/div&gt;' +
+        '&lt;/div&gt;\n' +
+        '&lt;script src="' + BASE_URL + '/embedscript.js"&gt;&lt;/script&gt;' +
       '</textarea>' +
       '<button class="embed-copy-btn" id="copyBtn" onclick="copyEmbed()">Copy Embed Code</button>' +
     '</div>';
