@@ -6,14 +6,14 @@
 <title>Startup City Card</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{background:transparent;width:100%;height:auto;overflow:hidden}
-body{display:block;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-body.hb{overflow:visible;padding:20px;background:#0a0a1a}
-.w{position:relative;width:100%;line-height:0;font-size:0}
+html,body{background:transparent;width:100%;height:auto;overflow:hidden;margin:0!important;padding:0!important}
+body{display:block;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+body.hb{overflow:visible;padding:20px!important;background:#0a0a1a}
+.w{position:relative;width:100%;line-height:0;font-size:0;margin:0!important;padding:0!important}
 .bk{display:inline-flex;align-items:center;gap:8px;background:rgba(5,10,58,.6);border:1px solid rgba(255,55,122,.2);color:#ff377a;font-family:inherit;font-size:12px;font-weight:600;padding:8px 18px;border-radius:24px;text-decoration:none;margin-bottom:16px;line-height:1.4}
 .bk:hover{background:rgba(255,55,122,.1);border-color:#ff377a;color:#fff}
 .bk svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
-.c{width:100%;height:300px;overflow:hidden;position:relative;display:flex;font-size:16px;line-height:1.4;background:#050a3a}
+.c{width:100%;overflow:hidden;position:relative;display:flex;font-size:16px;line-height:1.4;background:#050a3a;margin:0!important;padding:0!important}
 .bg{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(to right,#4c0649 0%,#2d0a3a 34%,#050a3a 60%,#050a3a 100%)}
 .d{position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;contain:strict}
 .g{position:absolute;border-radius:50%;filter:blur(50px)}
@@ -87,10 +87,10 @@ body.hb{overflow:visible;padding:20px;background:#0a0a1a}
 .ecb:hover{background:rgba(255,55,122,.2);color:#fff}
 .ecb.copied{background:rgba(255,55,122,.15);color:#fff}
 .err{color:rgba(255,255,255,.5);font-size:14px;text-align:center;padding:40px 20px;position:relative;z-index:2;line-height:1.4}
-@media(max-width:1024px){.c{height:280px}.l,.r{padding:20px 22px}.cn{font-size:34px}.rh{font-size:26px}.rn{font-size:42px}.cc{padding-left:24px}}
-@media(max-width:768px){.c{flex-direction:column;height:auto}.l{width:100%;padding:20px 22px 10px;order:1;justify-content:flex-start;gap:6px}.r{width:100%;padding:10px 22px 44px;order:2}.rt{display:none}.ri{display:flex}.cc{padding-left:0}.cn{font-size:28px}.tg{margin-bottom:0}.sp{display:none}.bg{background:linear-gradient(to bottom,#4c0649 0%,#2d0a3a 25%,#050a3a 50%,#050a3a 100%)}.st{padding:6px 0}.eb{bottom:8px;left:50%;transform:translateX(-50%)}.em{bottom:38px;left:50%;transform:translateX(-50%);width:290px}.bk{font-size:11px;padding:7px 14px}}
-@media(max-width:480px){.l{padding:16px 16px 8px}.r{padding:8px 16px 40px}.cn{font-size:24px}.ri .ih{font-size:15px}.ri .in{font-size:24px;margin-right:6px}.st{padding:5px 0}.sl{font-size:10px}.sv{font-size:16px}.em{width:calc(100% - 24px)}.bk{font-size:10px;padding:6px 12px;margin-bottom:12px}body.hb{padding:12px}}
-@media(max-width:360px){.l{padding:14px 12px 6px}.r{padding:6px 12px 38px}.cn{font-size:22px}.sv{font-size:15px}.ri .ih{font-size:14px}.ri .in{font-size:22px;margin-right:5px}.eb{font-size:9px;padding:4px 10px}.em{width:calc(100% - 16px);padding:12px}body.hb{padding:8px}}
+@media(max-width:1024px){.l,.r{padding:20px 22px}.cn{font-size:34px}.rh{font-size:26px}.rn{font-size:42px}.cc{padding-left:24px}}
+@media(max-width:768px){.c{flex-direction:column}.l{width:100%;padding:20px 22px 10px;order:1;justify-content:flex-start;gap:6px}.r{width:100%;padding:10px 22px 44px;order:2}.rt{display:none}.ri{display:flex}.cc{padding-left:0}.cn{font-size:28px}.tg{margin-bottom:0}.sp{display:none}.bg{background:linear-gradient(to bottom,#4c0649 0%,#2d0a3a 25%,#050a3a 50%,#050a3a 100%)}.st{padding:6px 0}.eb{bottom:8px;left:50%;transform:translateX(-50%)}.em{bottom:38px;left:50%;transform:translateX(-50%);width:290px}.bk{font-size:11px;padding:7px 14px}}
+@media(max-width:480px){.l{padding:16px 16px 8px}.r{padding:8px 16px 40px}.cn{font-size:24px}.ri .ih{font-size:15px}.ri .in{font-size:24px;margin-right:6px}.st{padding:5px 0}.sl{font-size:10px}.sv{font-size:16px}.em{width:calc(100% - 24px)}.bk{font-size:10px;padding:6px 12px;margin-bottom:12px}body.hb{padding:12px!important}}
+@media(max-width:360px){.l{padding:14px 12px 6px}.r{padding:6px 12px 38px}.cn{font-size:22px}.sv{font-size:15px}.ri .ih{font-size:14px}.ri .in{font-size:22px;margin-right:5px}.eb{font-size:9px;padding:4px 10px}.em{width:calc(100% - 16px);padding:12px}body.hb{padding:8px!important}}
 </style>
 </head>
 <body>
@@ -118,18 +118,25 @@ var B='https://robertmak.github.io/Startups_NE_Large',D=[
 ];
 function gS(){return new URLSearchParams(window.location.search).get('city')||'providence-ri'}
 function iE(){try{return self!==top}catch(e){return true}}
-function nP(){if(!iE())return;window.parent.postMessage({type:'startups-ne-resize',height:document.getElementById('cC').offsetHeight},'*')}
+function nP(){
+if(!iE())return;
+var h=document.getElementById('cC').offsetHeight;
+window.parent.postMessage({type:'startups-ne-resize',height:h},'*');
+}
 function rC(x){
-var c=document.getElementById('cC'),b=document.getElementById('bB'),
+var c=document.getElementById('cC'),bb=document.getElementById('bB'),
 eI='startups-ne-'+x.sl,cT=x.c+', '+x.sc+' - #'+x.r+' Best Cities for Startups',
 cU=B+'/card.html?city='+x.sl,mH='',i;
 document.title=cT;
-if(iE()){b.style.display='none'}else{document.body.classList.add('hb')}
+if(iE())bb.style.display='none';else document.body.classList.add('hb');
 for(i=0;i<x.m.length;i++)mH+='<div class="st"><span class="sl">'+x.m[i].l+'</span><span class="sv">'+x.m[i].v+'</span></div>';
 c.innerHTML='<div class="bg"></div><div class="d"><div class="g g1"></div><div class="g g2"></div><div class="b b1"></div><div class="b b2"></div><div class="b b3"></div><div class="b b4"></div><div class="b b5"></div><div class="b b6"></div><div class="b b7"></div><div class="b b8"></div><div class="b b9"></div><div class="b b10"></div><div class="b b11"></div><div class="b b12"></div><div class="b b13"></div><div class="b b14"></div><div class="b b15"></div><div class="b b16"></div><div class="b b17"></div><div class="b b18"></div><div class="b b19"></div><div class="b b20"></div><div class="b b21"></div><div class="b b22"></div><div class="b b23"></div><div class="b b24"></div></div><div class="l"><div class="rt"><span class="rh">#</span><span class="rn">'+x.r+'</span></div><div class="cc"><div class="ri"><span class="ih">#</span><span class="in">'+x.r+'</span></div><h2 class="cn">'+x.c+'</h2><p class="sn">'+x.s+'</p><p class="tg">'+x.sc+' &bull; Northeast U.S.</p></div><div class="sp"></div></div><div class="r"><div><div class="rh2"><div class="rb"><span class="rl">Rank</span><span class="rnb">#'+x.r+'</span></div><div class="pb"><span class="pv">'+x.p.toFixed(1)+'</span><span class="pl">Total Points</span></div></div><p class="cs">Best Cities for Startups</p></div><div class="sc"><p class="sh">Top Performing Metrics</p>'+mH+'</div></div><button class="eb" onclick="tE()"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>Embed</button><div class="em" id="eM"><div class="emh"><span class="emt">Embed This Card</span><button class="emx" onclick="tE()">&times;</button></div><textarea class="ec" id="eC" readonly></textarea><button class="ecb" id="cB" onclick="cE()">Copy Embed Code</button></div>';
 var eE=document.getElementById('eC');
 if(eE)eE.value='<div data-startups-embed="true" style="width:100%;max-width:100%;margin:0!important;padding:0!important;line-height:0!important;font-size:0!important;border:0!important;outline:0!important;display:block!important;">\n  <iframe\n    id="'+eI+'"\n    title="'+cT+'"\n    src="'+cU+'"\n    width="100%"\n    height="300"\n    frameborder="0"\n    scrolling="no"\n    loading="lazy"\n    style="display:block!important;border:none!important;margin:0!important;padding:0!important;max-width:100%!important;min-width:100%!important;overflow:hidden!important;line-height:0!important;outline:0!important;"\n    data-external="1">\n  </iframe>\n</div>\n\n<!-- Add once per page, before closing </body> tag -->\n<script defer src="'+B+'/embedscript.js"><\/script>';
-setTimeout(nP,100)}
+nP();
+var rT;
+window.addEventListener('resize',function(){clearTimeout(rT);rT=setTimeout(nP,100)});
+}
 function tE(){document.getElementById('eM').classList.toggle('active')}
 function cE(){var c=document.getElementById('eC');c.select();document.execCommand('copy');var b=document.getElementById('cB');b.textContent='Copied!';b.classList.add('copied');setTimeout(function(){b.textContent='Copy Embed Code';b.classList.remove('copied')},2000)}
 document.addEventListener('click',function(e){if(!e.target.closest('.eb')&&!e.target.closest('.em')){var m=document.getElementById('eM');if(m)m.classList.remove('active')}});
