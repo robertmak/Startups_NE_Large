@@ -8,8 +8,8 @@
   function resizeIframes() {
     var iframes = getStartupIframes();
     iframes.forEach(function(iframe) {
-      var parent = iframe.parentElement;
-      var width = parent ? parent.offsetWidth : iframe.offsetWidth;
+      var wrapper = iframe.parentElement;
+      var width = wrapper ? wrapper.offsetWidth : iframe.offsetWidth;
 
       if (width <= 480) {
         iframe.style.height = '520px';
@@ -26,12 +26,14 @@
       iframe.style.margin = '0';
       iframe.style.padding = '0';
       iframe.style.lineHeight = '0';
+      iframe.style.maxWidth = '100%';
 
-      if (parent) {
-        parent.style.lineHeight = '0';
-        parent.style.fontSize = '0';
-        parent.style.margin = '0';
-        parent.style.padding = '0';
+      // Only reset spacing on the direct wrapper div, not blog content containers
+      if (wrapper && wrapper.getAttribute('data-startups-embed') === 'true') {
+        wrapper.style.lineHeight = '0';
+        wrapper.style.fontSize = '0';
+        wrapper.style.margin = '0';
+        wrapper.style.padding = '0';
       }
     });
   }
