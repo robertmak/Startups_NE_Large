@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Cities for Startups</title>
+<title>Best Cities for Startups in the Northeast U.S. | Top 15 Rankings</title>
+<meta name="description" content="Discover the top 15 best cities for startups in the Northeast United States, ranked by coworking costs, office costs, freelancer density, survival rates, and more.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://robertmak.github.io/Startups_NE_Large/">
+<meta property="og:title" content="Best Cities for Startups in the Northeast U.S.">
+<meta property="og:description" content="Top 15 Northeast U.S. cities ranked for startup friendliness based on costs, talent, and growth metrics.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://robertmak.github.io/Startups_NE_Large/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Best Cities for Startups in the Northeast U.S.">
+<meta name="twitter:description" content="Top 15 Northeast U.S. cities ranked for startup friendliness.">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -11,6 +21,7 @@
     padding: 40px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
+    color: white;
   }
   .page-header {
     text-align: center;
@@ -29,6 +40,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    list-style: none;
   }
   .city-item {
     display: flex;
@@ -38,7 +50,7 @@
     border-radius: 12px;
     padding: 16px 24px;
     border: 1px solid rgba(255, 55, 122, 0.08);
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-decoration: none;
   }
@@ -83,7 +95,7 @@
     padding: 8px 20px;
     border-radius: 24px;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
     white-space: nowrap;
   }
   .city-item:hover .view-card-btn {
@@ -123,49 +135,53 @@
 </style>
 </head>
 <body>
-<div class="page-header">
+<header class="page-header">
   <h1 class="page-title">Best Cities for Startups</h1>
-</div>
-<div class="city-list" id="cityList"></div>
-<script>
-var cities = [
-  { rank: 1, city: "Providence", stateCode: "RI", slug: "providence-ri" },
-  { rank: 2, city: "Pittsburgh", stateCode: "PA", slug: "pittsburgh-pa" },
-  { rank: 3, city: "Brooklyn", stateCode: "NY", slug: "brooklyn-ny" },
-  { rank: 4, city: "Rochester", stateCode: "NY", slug: "rochester-ny" },
-  { rank: 5, city: "Manhattan", stateCode: "NY", slug: "manhattan-ny" },
-  { rank: 6, city: "Queens", stateCode: "NY", slug: "queens-ny" },
-  { rank: 7, city: "Worcester", stateCode: "MA", slug: "worcester-ma" },
-  { rank: 8, city: "Bridgeport", stateCode: "CT", slug: "bridgeport-ct" },
-  { rank: 9, city: "Buffalo", stateCode: "NY", slug: "buffalo-ny" },
-  { rank: 10, city: "Boston", stateCode: "MA", slug: "boston-ma" },
-  { rank: 11, city: "Jersey City", stateCode: "NJ", slug: "jersey-city-nj" },
-  { rank: 12, city: "Newark", stateCode: "NJ", slug: "newark-nj" },
-  { rank: 13, city: "Philadelphia", stateCode: "PA", slug: "philadelphia-pa" },
-  { rank: 14, city: "Springfield", stateCode: "MA", slug: "springfield-ma" },
-  { rank: 15, city: "Bronx", stateCode: "NY", slug: "bronx-ny" }
-];
-function buildList() {
-  var list = document.getElementById('cityList');
-  var html = '';
-  for (var i = 0; i < cities.length; i++) {
-    var c = cities[i];
-    html += '<a href="card.html?city=' + c.slug + '" class="city-item">' +
-      '<div class="city-info">' +
-        '<span class="city-rank">#' + c.rank + '</span>' +
-        '<span class="city-name">' + c.city + ', ' + c.stateCode + '</span>' +
-      '</div>' +
-      '<span class="view-card-btn">' +
-        'View Card' +
-        '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">' +
-          '<path d="M5 12h14M12 5l7 7-7 7"/>' +
-        '</svg>' +
-      '</span>' +
-    '</a>';
-  }
-  list.innerHTML = html;
+</header>
+<nav aria-label="City rankings">
+  <ol class="city-list" id="cityList">
+    <li><a href="card.html?city=providence-ri" class="city-item"><div class="city-info"><span class="city-rank">#1</span><span class="city-name">Providence, RI</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=pittsburgh-pa" class="city-item"><div class="city-info"><span class="city-rank">#2</span><span class="city-name">Pittsburgh, PA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=brooklyn-ny" class="city-item"><div class="city-info"><span class="city-rank">#3</span><span class="city-name">Brooklyn, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=rochester-ny" class="city-item"><div class="city-info"><span class="city-rank">#4</span><span class="city-name">Rochester, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=manhattan-ny" class="city-item"><div class="city-info"><span class="city-rank">#5</span><span class="city-name">Manhattan, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=queens-ny" class="city-item"><div class="city-info"><span class="city-rank">#6</span><span class="city-name">Queens, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=worcester-ma" class="city-item"><div class="city-info"><span class="city-rank">#7</span><span class="city-name">Worcester, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=bridgeport-ct" class="city-item"><div class="city-info"><span class="city-rank">#8</span><span class="city-name">Bridgeport, CT</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=buffalo-ny" class="city-item"><div class="city-info"><span class="city-rank">#9</span><span class="city-name">Buffalo, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=boston-ma" class="city-item"><div class="city-info"><span class="city-rank">#10</span><span class="city-name">Boston, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=jersey-city-nj" class="city-item"><div class="city-info"><span class="city-rank">#11</span><span class="city-name">Jersey City, NJ</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=newark-nj" class="city-item"><div class="city-info"><span class="city-rank">#12</span><span class="city-name">Newark, NJ</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=philadelphia-pa" class="city-item"><div class="city-info"><span class="city-rank">#13</span><span class="city-name">Philadelphia, PA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=springfield-ma" class="city-item"><div class="city-info"><span class="city-rank">#14</span><span class="city-name">Springfield, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+    <li><a href="card.html?city=bronx-ny" class="city-item"><div class="city-info"><span class="city-rank">#15</span><span class="city-name">Bronx, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+  </ol>
+</nav>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Best Cities for Startups in the Northeast U.S.",
+  "description": "Top 15 Northeast U.S. cities ranked for startup friendliness based on costs, talent, and growth metrics.",
+  "numberOfItems": 15,
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Providence, RI", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=providence-ri"},
+    {"@type": "ListItem", "position": 2, "name": "Pittsburgh, PA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=pittsburgh-pa"},
+    {"@type": "ListItem", "position": 3, "name": "Brooklyn, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=brooklyn-ny"},
+    {"@type": "ListItem", "position": 4, "name": "Rochester, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=rochester-ny"},
+    {"@type": "ListItem", "position": 5, "name": "Manhattan, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=manhattan-ny"},
+    {"@type": "ListItem", "position": 6, "name": "Queens, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=queens-ny"},
+    {"@type": "ListItem", "position": 7, "name": "Worcester, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=worcester-ma"},
+    {"@type": "ListItem", "position": 8, "name": "Bridgeport, CT", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=bridgeport-ct"},
+    {"@type": "ListItem", "position": 9, "name": "Buffalo, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=buffalo-ny"},
+    {"@type": "ListItem", "position": 10, "name": "Boston, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=boston-ma"},
+    {"@type": "ListItem", "position": 11, "name": "Jersey City, NJ", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=jersey-city-nj"},
+    {"@type": "ListItem", "position": 12, "name": "Newark, NJ", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=newark-nj"},
+    {"@type": "ListItem", "position": 13, "name": "Philadelphia, PA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=philadelphia-pa"},
+    {"@type": "ListItem", "position": 14, "name": "Springfield, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=springfield-ma"},
+    {"@type": "ListItem", "position": 15, "name": "Bronx, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=bronx-ny"}
+  ]
 }
-buildList();
 </script>
 </body>
 </html>
