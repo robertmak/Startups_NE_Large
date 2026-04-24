@@ -1,6 +1,10 @@
 (function() {
   'use strict';
 
+  // Prevent multiple executions if script is loaded more than once
+  if (window._startupsNELoaded) return;
+  window._startupsNELoaded = true;
+
   function getStartupIframes() {
     return document.querySelectorAll('iframe[id^="startups-ne-"]');
   }
@@ -60,8 +64,12 @@
     }
   });
 
-  // defer guarantees DOM is ready, run immediately
   resizeIframes();
-
   window.addEventListener('resize', resizeIframes);
+
+  // Watch for dynamically added iframes
+  var observer = new MutationObserver(function() {
+    resizeIframes();
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 })();
