@@ -3,185 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Cities for Startups in the Northeast U.S. | Top 15 Rankings</title>
-<meta name="description" content="Discover the top 15 best cities for startups in the Northeast United States, ranked by coworking costs, office costs, freelancer density, survival rates, and more.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://robertmak.github.io/Startups_NE_Large/">
-<meta property="og:title" content="Best Cities for Startups in the Northeast U.S.">
-<meta property="og:description" content="Top 15 Northeast U.S. cities ranked for startup friendliness based on costs, talent, and growth metrics.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://robertmak.github.io/Startups_NE_Large/">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Best Cities for Startups in the Northeast U.S.">
-<meta name="twitter:description" content="Top 15 Northeast U.S. cities ranked for startup friendliness.">
+<title>Best Cities for Startups</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #0a0a1a;
-    padding: 40px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    min-height: 100vh;
-    color: white;
-  }
-  .page-header {
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto 48px;
-  }
-  .page-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.2;
-  }
-  .city-list {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    list-style: none;
-  }
-  .city-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #050a3a;
-    border-radius: 12px;
-    padding: 16px 24px;
-    border: 1px solid rgba(255, 55, 122, 0.08);
-    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  .city-item:hover {
-    border-color: rgba(255, 55, 122, 0.25);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 55, 122, 0.05);
-  }
-  .city-info {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-  .city-rank {
-    font-size: 13px;
-    font-weight: 800;
-    color: #ff377a;
-    background: rgba(255, 55, 122, 0.1);
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 55, 122, 0.25);
-    min-width: 44px;
-    text-align: center;
-  }
-  .city-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-    line-height: 1.2;
-  }
-  .view-card-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255, 55, 122, 0.08);
-    border: 1px solid rgba(255, 55, 122, 0.2);
-    color: #ff377a;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    padding: 8px 20px;
-    border-radius: 24px;
-    text-decoration: none;
-    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    white-space: nowrap;
-  }
-  .city-item:hover .view-card-btn {
-    background: rgba(255, 55, 122, 0.15);
-    border-color: #ff377a;
-    color: white;
-    box-shadow: 0 4px 12px rgba(255, 55, 122, 0.15);
-  }
-  .view-card-btn svg {
-    width: 14px;
-    height: 14px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-  @media (max-width: 768px) {
-    body { padding: 24px 12px; }
-    .page-title { font-size: 28px; }
-    .city-item { padding: 14px 16px; }
-    .city-info { gap: 14px; }
-    .city-name { font-size: 16px; }
-    .view-card-btn { font-size: 11px; padding: 7px 16px; }
-  }
-  @media (max-width: 480px) {
-    body { padding: 16px 8px; }
-    .page-title { font-size: 24px; }
-    .page-header { margin: 0 auto 32px; }
-    .city-list { gap: 8px; }
-    .city-item { padding: 12px 14px; }
-    .city-info { gap: 10px; }
-    .city-name { font-size: 15px; }
-    .city-rank { font-size: 11px; padding: 3px 10px; min-width: 38px; }
-    .view-card-btn { font-size: 11px; padding: 6px 14px; }
-  }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a1a;padding:40px 20px;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;min-height:100vh}
+h1{font-size:42px;font-weight:700;color:#fff;line-height:1.2;text-align:center;max-width:800px;margin:0 auto 48px}
+ol{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px;list-style:none}
+a{display:flex;align-items:center;justify-content:space-between;background:#050a3a;border-radius:12px;padding:16px 24px;border:1px solid rgba(255,55,122,.08);text-decoration:none}
+a:hover{border-color:rgba(255,55,122,.25);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.rk{font-size:13px;font-weight:800;color:#ff377a;background:rgba(255,55,122,.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,55,122,.25);min-width:44px;text-align:center}
+.nm{font-size:18px;font-weight:700;color:#fff;margin-left:20px}
+.vw{font-size:12px;font-weight:600;color:#ff377a;background:rgba(255,55,122,.08);border:1px solid rgba(255,55,122,.2);padding:8px 20px;border-radius:24px;white-space:nowrap;display:inline-flex;align-items:center;gap:8px}
+a:hover .vw{background:rgba(255,55,122,.15);border-color:#ff377a;color:#fff}
+.vw svg{width:14px;height:14px;stroke:currentColor;stroke-width:2;fill:none}
+.lf{display:flex;align-items:center}
+@media(max-width:768px){body{padding:24px 12px}h1{font-size:28px}a{padding:14px 16px}.nm{font-size:16px;margin-left:14px}.vw{font-size:11px;padding:7px 16px}}
+@media(max-width:480px){body{padding:16px 8px}h1{font-size:24px;margin:0 auto 32px}ol{gap:8px}a{padding:12px 14px}.nm{font-size:15px;margin-left:10px}.rk{font-size:11px;padding:3px 10px;min-width:38px}.vw{font-size:11px;padding:6px 14px}}
 </style>
 </head>
 <body>
-<header class="page-header">
-  <h1 class="page-title">Best Cities for Startups</h1>
-</header>
-<nav aria-label="City rankings">
-  <ol class="city-list" id="cityList">
-    <li><a href="card.html?city=providence-ri" class="city-item"><div class="city-info"><span class="city-rank">#1</span><span class="city-name">Providence, RI</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=pittsburgh-pa" class="city-item"><div class="city-info"><span class="city-rank">#2</span><span class="city-name">Pittsburgh, PA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=brooklyn-ny" class="city-item"><div class="city-info"><span class="city-rank">#3</span><span class="city-name">Brooklyn, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=rochester-ny" class="city-item"><div class="city-info"><span class="city-rank">#4</span><span class="city-name">Rochester, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=manhattan-ny" class="city-item"><div class="city-info"><span class="city-rank">#5</span><span class="city-name">Manhattan, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=queens-ny" class="city-item"><div class="city-info"><span class="city-rank">#6</span><span class="city-name">Queens, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=worcester-ma" class="city-item"><div class="city-info"><span class="city-rank">#7</span><span class="city-name">Worcester, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=bridgeport-ct" class="city-item"><div class="city-info"><span class="city-rank">#8</span><span class="city-name">Bridgeport, CT</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=buffalo-ny" class="city-item"><div class="city-info"><span class="city-rank">#9</span><span class="city-name">Buffalo, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=boston-ma" class="city-item"><div class="city-info"><span class="city-rank">#10</span><span class="city-name">Boston, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=jersey-city-nj" class="city-item"><div class="city-info"><span class="city-rank">#11</span><span class="city-name">Jersey City, NJ</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=newark-nj" class="city-item"><div class="city-info"><span class="city-rank">#12</span><span class="city-name">Newark, NJ</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=philadelphia-pa" class="city-item"><div class="city-info"><span class="city-rank">#13</span><span class="city-name">Philadelphia, PA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=springfield-ma" class="city-item"><div class="city-info"><span class="city-rank">#14</span><span class="city-name">Springfield, MA</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-    <li><a href="card.html?city=bronx-ny" class="city-item"><div class="city-info"><span class="city-rank">#15</span><span class="city-name">Bronx, NY</span></div><span class="view-card-btn">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
-  </ol>
-</nav>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "Best Cities for Startups in the Northeast U.S.",
-  "description": "Top 15 Northeast U.S. cities ranked for startup friendliness based on costs, talent, and growth metrics.",
-  "numberOfItems": 15,
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Providence, RI", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=providence-ri"},
-    {"@type": "ListItem", "position": 2, "name": "Pittsburgh, PA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=pittsburgh-pa"},
-    {"@type": "ListItem", "position": 3, "name": "Brooklyn, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=brooklyn-ny"},
-    {"@type": "ListItem", "position": 4, "name": "Rochester, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=rochester-ny"},
-    {"@type": "ListItem", "position": 5, "name": "Manhattan, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=manhattan-ny"},
-    {"@type": "ListItem", "position": 6, "name": "Queens, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=queens-ny"},
-    {"@type": "ListItem", "position": 7, "name": "Worcester, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=worcester-ma"},
-    {"@type": "ListItem", "position": 8, "name": "Bridgeport, CT", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=bridgeport-ct"},
-    {"@type": "ListItem", "position": 9, "name": "Buffalo, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=buffalo-ny"},
-    {"@type": "ListItem", "position": 10, "name": "Boston, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=boston-ma"},
-    {"@type": "ListItem", "position": 11, "name": "Jersey City, NJ", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=jersey-city-nj"},
-    {"@type": "ListItem", "position": 12, "name": "Newark, NJ", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=newark-nj"},
-    {"@type": "ListItem", "position": 13, "name": "Philadelphia, PA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=philadelphia-pa"},
-    {"@type": "ListItem", "position": 14, "name": "Springfield, MA", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=springfield-ma"},
-    {"@type": "ListItem", "position": 15, "name": "Bronx, NY", "url": "https://robertmak.github.io/Startups_NE_Large/card.html?city=bronx-ny"}
-  ]
-}
-</script>
+<h1>Best Cities for Startups</h1>
+<ol>
+<li><a href="card.html?city=providence-ri"><div class="lf"><span class="rk">#1</span><span class="nm">Providence, RI</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=pittsburgh-pa"><div class="lf"><span class="rk">#2</span><span class="nm">Pittsburgh, PA</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=brooklyn-ny"><div class="lf"><span class="rk">#3</span><span class="nm">Brooklyn, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=rochester-ny"><div class="lf"><span class="rk">#4</span><span class="nm">Rochester, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=manhattan-ny"><div class="lf"><span class="rk">#5</span><span class="nm">Manhattan, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=queens-ny"><div class="lf"><span class="rk">#6</span><span class="nm">Queens, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=worcester-ma"><div class="lf"><span class="rk">#7</span><span class="nm">Worcester, MA</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=bridgeport-ct"><div class="lf"><span class="rk">#8</span><span class="nm">Bridgeport, CT</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=buffalo-ny"><div class="lf"><span class="rk">#9</span><span class="nm">Buffalo, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=boston-ma"><div class="lf"><span class="rk">#10</span><span class="nm">Boston, MA</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=jersey-city-nj"><div class="lf"><span class="rk">#11</span><span class="nm">Jersey City, NJ</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=newark-nj"><div class="lf"><span class="rk">#12</span><span class="nm">Newark, NJ</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=philadelphia-pa"><div class="lf"><span class="rk">#13</span><span class="nm">Philadelphia, PA</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=springfield-ma"><div class="lf"><span class="rk">#14</span><span class="nm">Springfield, MA</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+<li><a href="card.html?city=bronx-ny"><div class="lf"><span class="rk">#15</span><span class="nm">Bronx, NY</span></div><span class="vw">View Card<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a></li>
+</ol>
 </body>
 </html>
