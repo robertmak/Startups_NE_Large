@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Cities for Startups</title>
+<meta name="robots" content="noindex">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
@@ -43,7 +44,7 @@
     border-radius: 24px;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     margin-bottom: 16px;
     line-height: 1.4;
   }
@@ -51,8 +52,6 @@
     background: rgba(255, 55, 122, 0.1);
     border-color: #ff377a;
     color: white;
-    transform: translateX(-2px);
-    box-shadow: 0 4px 12px rgba(255, 55, 122, 0.15);
   }
   .back-btn:active { transform: translateX(0); }
   .back-btn svg {
@@ -85,11 +84,13 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     overflow: hidden;
+    contain: strict;
   }
   .glow {
     position: absolute;
     border-radius: 50%;
     filter: blur(50px);
+    will-change: auto;
   }
   .glow-1 { width: 160px; height: 160px; top: -15%; left: 5%; background: rgba(255, 55, 122, 0.1); }
   .glow-2 { width: 120px; height: 120px; bottom: -5%; left: 25%; background: rgba(76, 6, 73, 0.18); }
@@ -255,10 +256,9 @@
     font-size: 10px; font-weight: 600; letter-spacing: 0.5px;
     padding: 5px 12px; border-radius: 20px; cursor: pointer;
     display: inline-flex; align-items: center; gap: 5px;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
-  .embed-btn:hover { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(255,55,122,0.2); }
+  .embed-btn:hover { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; }
   .embed-btn:active { transform: translateY(0); }
   .embed-btn svg { width: 12px; height: 12px; fill: currentColor; }
   .embed-modal {
@@ -285,7 +285,7 @@
     background: rgba(255,55,122,0.1); border: 1px solid rgba(255,55,122,0.3);
     color: #ff377a; font-size: 11px; font-weight: 600;
     padding: 7px; border-radius: 8px; cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease;
   }
   .embed-copy-btn:hover { background: rgba(255,55,122,0.2); color: white; }
   .embed-copy-btn.copied { background: rgba(255,55,122,0.15); border-color: #ff377a; color: white; }
@@ -314,7 +314,7 @@
     }
     .stat { padding: 6px 0; }
     .embed-btn { bottom: 8px; left: 50%; transform: translateX(-50%); }
-    .embed-btn:hover { transform: translateX(-50%) translateY(-1px); }
+    .embed-btn:hover { transform: translateX(-50%); }
     .embed-modal { bottom: 38px; left: 50%; transform: translateX(-50%); width: 290px; }
     .back-btn { font-size: 11px; padding: 7px 14px; }
   }
@@ -398,10 +398,9 @@ function isEmbedded() {
 function notifyParentHeight() {
   if (!isEmbedded()) return;
   var card = document.getElementById('cityCard');
-  var height = card.offsetHeight;
   window.parent.postMessage({
     type: 'startups-ne-resize',
-    height: height
+    height: card.offsetHeight
   }, '*');
 }
 function renderCard(city) {
@@ -445,30 +444,18 @@ function renderCard(city) {
       '<div class="dot" style="top:50%;left:6%;opacity:0.05;width:4px;height:4px;"></div>' +
       '<div class="dot" style="top:82%;left:33%;opacity:0.07;width:2px;height:2px;"></div>' +
       '<div class="dot" style="top:40%;left:45%;opacity:0.06;width:3px;height:3px;"></div>' +
-      '<div class="bubble b1"></div>' +
-      '<div class="bubble b2"></div>' +
-      '<div class="bubble b3"></div>' +
-      '<div class="bubble b4"></div>' +
-      '<div class="bubble b5"></div>' +
-      '<div class="bubble b6"></div>' +
-      '<div class="bubble b7"></div>' +
-      '<div class="bubble b8"></div>' +
-      '<div class="bubble b9"></div>' +
-      '<div class="bubble b10"></div>' +
-      '<div class="bubble b11"></div>' +
-      '<div class="bubble b12"></div>' +
-      '<div class="bubble b13"></div>' +
-      '<div class="bubble b14"></div>' +
-      '<div class="bubble b15"></div>' +
-      '<div class="bubble b16"></div>' +
-      '<div class="bubble b17"></div>' +
-      '<div class="bubble b18"></div>' +
-      '<div class="bubble b19"></div>' +
-      '<div class="bubble b20"></div>' +
-      '<div class="bubble b21"></div>' +
-      '<div class="bubble b22"></div>' +
-      '<div class="bubble b23"></div>' +
-      '<div class="bubble b24"></div>' +
+      '<div class="bubble b1"></div><div class="bubble b2"></div>' +
+      '<div class="bubble b3"></div><div class="bubble b4"></div>' +
+      '<div class="bubble b5"></div><div class="bubble b6"></div>' +
+      '<div class="bubble b7"></div><div class="bubble b8"></div>' +
+      '<div class="bubble b9"></div><div class="bubble b10"></div>' +
+      '<div class="bubble b11"></div><div class="bubble b12"></div>' +
+      '<div class="bubble b13"></div><div class="bubble b14"></div>' +
+      '<div class="bubble b15"></div><div class="bubble b16"></div>' +
+      '<div class="bubble b17"></div><div class="bubble b18"></div>' +
+      '<div class="bubble b19"></div><div class="bubble b20"></div>' +
+      '<div class="bubble b21"></div><div class="bubble b22"></div>' +
+      '<div class="bubble b23"></div><div class="bubble b24"></div>' +
     '</div>' +
     '<div class="card-left">' +
       '<div class="city-rank-top">' +
