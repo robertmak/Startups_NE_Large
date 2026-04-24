@@ -110,7 +110,6 @@
     border-radius: 50%;
     background: rgba(255, 55, 122, 0.15);
   }
-  /* Static bubbles */
   .bubble {
     position: absolute;
     border-radius: 50%;
@@ -125,7 +124,6 @@
     filter: blur(1px);
     transform: rotate(-30deg);
   }
-  /* 24 fixed bubbles - varied sizes, spread across full card */
   .b1  { width: 48px; height: 48px; top: 6%;  left: 3%;  opacity: 0.70; border: 1px solid rgba(255,55,122,0.18);  box-shadow: 0 0 14px rgba(255,55,122,0.10);  background: radial-gradient(circle at 30% 30%, rgba(255,55,122,0.09) 0%, rgba(255,55,122,0.04) 40%, transparent 70%); }
   .b2  { width: 14px; height: 14px; top: 32%; left: 7%;  opacity: 0.65; border: 1px solid rgba(180,40,200,0.20);  box-shadow: 0 0 8px rgba(180,40,200,0.10);   background: radial-gradient(circle at 30% 30%, rgba(180,40,200,0.10) 0%, rgba(180,40,200,0.04) 40%, transparent 70%); }
   .b3  { width: 72px; height: 72px; top: 18%; left: 18%; opacity: 0.55; border: 1px solid rgba(100,60,255,0.15);  box-shadow: 0 0 18px rgba(100,60,255,0.09);  background: radial-gradient(circle at 30% 30%, rgba(100,60,255,0.08) 0%, rgba(100,60,255,0.03) 40%, transparent 70%); }
@@ -510,26 +508,30 @@ function renderCard(city) {
         '<span class="embed-modal-title">Embed This Card</span>' +
         '<button class="embed-modal-close" onclick="toggleEmbed()">&times;</button>' +
       '</div>' +
-      '<textarea class="embed-code" id="embedCode" readonly>' +
-        '&lt;div data-startups-embed="true" style="width:100%;max-width:100%;margin:0;padding:0;line-height:0;font-size:0;"&gt;\n' +
-        '  &lt;iframe\n' +
-        '    id="' + embedId + '"\n' +
-        '    title="' + cardTitle + '"\n' +
-        '    aria-label="' + city.city + ' ' + city.state + ' startup city card"\n' +
-        '    src="' + cardUrl + '"\n' +
-        '    width="100%"\n' +
-        '    height="300"\n' +
-        '    frameborder="0"\n' +
-        '    scrolling="no"\n' +
-        '    loading="lazy"\n' +
-        '    style="display:block;border:none;margin:0;padding:0;max-width:100%;min-width:100%!important;overflow:hidden;line-height:0;"\n' +
-        '    data-external="1"&gt;\n' +
-        '  &lt;/iframe&gt;\n' +
-        '&lt;/div&gt;\n' +
-        '&lt;script defer src="' + BASE_URL + '/embedscript.js"&gt;&lt;/script&gt;' +
-      '</textarea>' +
+      '<textarea class="embed-code" id="embedCode" readonly></textarea>' +
       '<button class="embed-copy-btn" id="copyBtn" onclick="copyEmbed()">Copy Embed Code</button>' +
     '</div>';
+
+  var embedCodeEl = document.getElementById('embedCode');
+  if (embedCodeEl) {
+    embedCodeEl.value =
+      '<div data-startups-embed="true" style="width:100%;max-width:100%;margin:0;padding:0;line-height:0;font-size:0;">\n' +
+      '  <iframe\n' +
+      '    id="' + embedId + '"\n' +
+      '    title="' + cardTitle + '"\n' +
+      '    aria-label="' + city.city + ' ' + city.state + ' startup city card"\n' +
+      '    src="' + cardUrl + '"\n' +
+      '    width="100%"\n' +
+      '    height="300"\n' +
+      '    frameborder="0"\n' +
+      '    scrolling="no"\n' +
+      '    loading="lazy"\n' +
+      '    style="display:block;border:none;margin:0;padding:0;max-width:100%;min-width:100%!important;overflow:hidden;line-height:0;"\n' +
+      '    data-external="1">\n' +
+      '  </iframe>\n' +
+      '</div>\n' +
+      '<script defer src="' + BASE_URL + '/embedscript.js"><\/script>';
+  }
 
   setTimeout(notifyParentHeight, 100);
 }
