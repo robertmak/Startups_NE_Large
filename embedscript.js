@@ -1,81 +1,46 @@
-(function () {
-  'use strict';
+(function(){
+'use strict';
+if(window._startupsNELoaded)return;
+window._startupsNELoaded=true;
 
-  if (window.__startupsNE) return;
-  window.__startupsNE = true;
+function get(){
+return document.querySelectorAll('iframe[id^="startups-ne-"]');
+}
 
-  const IFRAME_SELECTOR = 'iframe[id^="startups-ne-"]';
+function styleFrame(f){
+f.style.width='100%';
+f.style.maxWidth='100%';
+f.style.display='block';
+f.style.border='0';
+f.style.overflow='hidden';
+f.setAttribute('scrolling','no');
+}
 
-  function getFrames() {
-    return document.querySelectorAll(IFRAME_SELECTOR);
-  }
+function init(){
+get().forEach(function(f){styleFrame(f)});
+}
 
-  function getHeight(width) {
-    if (width <= 480) return 520;
-    if (width <= 768) return 460;
-    return 320;
-  }
+window.addEventListener('message',function(e){
+if(!e.data||e.data.type!=='startups-ne-resize')return;
+var frames=get();
+frames.forEach(function(f){
+try{
+if(f.contentWindow===e.source){
+f.style.height=e.data.height+'px';
+}
+}catch(err){}
+});
+});
 
-  function resizeFrame(frame) {
-    const width = frame.parentElement
-      ? frame.parentElement.offsetWidth
-      : frame.offsetWidth;
+init();
 
-    const height = getHeight(width);
+get().forEach(function(f){
+f.addEventListener('load',function(){styleFrame(f)});
+});
 
-    frame.style.setProperty('width', '100%', 'important');
-    frame.style.setProperty('max-width', '100%', 'important');
-    frame.style.setProperty('display', 'block', 'important');
-    frame.style.setProperty('border', '0', 'important');
-    frame.style.setProperty('overflow', 'hidden', 'important');
-    frame.style.setProperty('height', height + 'px', 'important');
-  }
-
-  function resizeAll() {
-    getFrames().forEach(resizeFrame);
-  }
-
-  // Message-based resize (future-proof)
-  window.addEventListener('message', function (e) {
-    if (!e.data || e.data.type !== 'startups-ne-resize') return;
-
-    const frames = getFrames();
-    for (let i = 0; i < frames.length; i++) {
-      try {
-        if (frames[i].contentWindow === e.source && e.data.height) {
-          frames[i].style.setProperty(
-            'height',
-            e.data.height + 'px',
-            'important'
-          );
-        }
-      } catch (err) {}
-    }
-  });
-
-  // Debounced resize
-  let resizeTimer;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resizeAll, 80);
-  });
-
-  // DOM observer (lightweight, no layout hacking)
-  const observer = new MutationObserver(function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(resizeAll, 80);
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  // init
-  resizeAll();
-
-  // ensure iframe load recalculates
-  getFrames().forEach(frame => {
-    frame.addEventListener('load', () => resizeFrame(frame));
-  });
+var mT;
+new MutationObserver(function(){
+clearTimeout(mT);
+mT=setTimeout(init,100);
+}).observe(document.body,{childList:true,subtree:true});
 })();
