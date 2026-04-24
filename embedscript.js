@@ -28,7 +28,6 @@
       iframe.style.lineHeight = '0';
       iframe.style.maxWidth = '100%';
 
-      // Only reset spacing on the direct wrapper div, not blog content containers
       if (wrapper && wrapper.getAttribute('data-startups-embed') === 'true') {
         wrapper.style.lineHeight = '0';
         wrapper.style.fontSize = '0';
@@ -61,11 +60,8 @@
     }
   });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', resizeIframes);
-  } else {
-    resizeIframes();
-  }
+  // defer guarantees DOM is ready, run immediately
+  resizeIframes();
 
   window.addEventListener('resize', resizeIframes);
 })();
